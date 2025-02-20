@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<sdf version="1.11" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <model name="spikonado" canonical_link="base_link">
+    <xacro:include filename="material_macros.xacro" />
+    <xacro:include filename="omni_wheel.xacro" />
+
+    <link name="base_link">
+      <must_be_base_link>true</must_be_base_link>
+    </link>
+
+    <joint name="base_plate_joint" type="fixed">
+      <pose relative_to="base_link" />
+      <parent>base_link</parent>
+      <child>base_plate_link</child>
+    </joint>
+
+    <link name="base_plate_link">
+      <pose relative_to="base_plate_joint" />
+      <visual name="base_plate_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/base/base_plate.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:orange_material />
+      </visual>
+      <collision name="base_plate_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/base/base_plate.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.37</mass>
+        <inertia>
+          <ixx>0.00092944</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.00092944</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.00185</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="front_wheel_joint" type="revolute">
+      <pose relative_to="base_plate_link" degrees="true">0.1118 0 0 0 90 0</pose>
+      <parent>base_plate_link</parent>
+      <child>front_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <velocity>21</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--<xacro:omni_wheel
+    prefix="front" />-->
+
+    <link name="front_wheel_link">
+      <pose relative_to="front_wheel_joint" />
+      <visual name="front_wheel_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <xacro:white_material />
+      </visual>
+      <collision name="front_wheel_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>100.0</mu2>
+              <fdir1>0 0 1</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.024</mass>
+        <inertia>
+          <ixx>0.000003134</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000003134</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000004332</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="back_wheel_joint" type="revolute">
+      <pose relative_to="base_plate_link" degrees="true">-0.1118 0 0 0 -90 0</pose>
+      <parent>base_plate_link</parent>
+      <child>back_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <velocity>21</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--<xacro:omni_wheel
+    prefix="back" />-->
+
+    <link name="back_wheel_link">
+      <pose relative_to="back_wheel_joint" />
+      <visual name="back_wheel_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <xacro:white_material />
+      </visual>
+      <collision name="back_wheel_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.5</mu>
+              <mu2>100.0</mu2>
+              <fdir1>0 0 1</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.024</mass>
+        <inertia>
+          <ixx>0.000003134</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000003134</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000004332</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="left_wheel_joint" type="revolute">
+      <pose relative_to="base_plate_link" degrees="true">0 0.1118 0 -90 0 0</pose>
+      <parent>base_plate_link</parent>
+      <child>left_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <velocity>21</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--<xacro:omni_wheel
+    prefix="left" />-->
+
+    <link name="left_wheel_link">
+      <pose relative_to="left_wheel_joint" />
+      <visual name="left_wheel_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <xacro:white_material />
+      </visual>
+      <collision name="left_wheel_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.5</mu>
+              <mu2>100.0</mu2>
+              <fdir1>0 0 1</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.024</mass>
+        <inertia>
+          <ixx>0.000003134</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000003134</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000004332</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="right_wheel_joint" type="revolute">
+      <pose relative_to="base_plate_link" degrees="true">0 -0.1118 0 90 0 0</pose>
+      <parent>base_plate_link</parent>
+      <child>right_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <velocity>21</velocity>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--<xacro:omni_wheel
+    prefix="right" />-->
+
+    <link name="right_wheel_link">
+      <pose relative_to="right_wheel_joint" />
+      <visual name="right_wheel_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <xacro:white_material />
+      </visual>
+      <collision name="right_wheel_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.019</radius>
+            <length>0.0234</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.5</mu>
+              <mu2>100.0</mu2>
+              <fdir1>0 0 1</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.024</mass>
+        <inertia>
+          <ixx>0.000003134</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000003134</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000004332</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <xacro:include filename="sensors.xacro" />
+    <xacro:include filename="ros2_control.xacro" />
+    <xacro:include filename="sim_plugins.xacro" />
+  </model>
+</sdf>

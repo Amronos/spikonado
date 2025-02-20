@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<sdf version="1.11" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="omni_wheel" params="prefix">
+    <link name="${prefix}_wheel_link">
+      <pose relative_to="${prefix}_wheel_joint" />
+      <visual name="${prefix}_wheel_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/main_body.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:white_material />
+      </visual>
+      <collision name="${prefix}_wheel_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/main_body.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>0.024</mass>
+        <inertia>
+          <ixx>0.000003134</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000003134</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000004332</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_1_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">0.0145 0 0.007 0 0 90</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_1_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_1_link">
+      <pose relative_to="${prefix}_wheel_roller_1_joint" />
+      <visual name="${prefix}_wheel_roller_1_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_1_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_2_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">0 0.0145 0.007 0 0 0</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_2_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_2_link">
+      <pose relative_to="${prefix}_wheel_roller_2_joint" />
+      <visual name="${prefix}_wheel_roller_2_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_2_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_3_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">-0.0145 0 0.007 0 0 90</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_3_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_3_link">
+      <pose relative_to="${prefix}_wheel_roller_3_joint" />
+      <visual name="${prefix}_wheel_roller_3_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_3_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_4_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">0 -0.0145 0.007 0 0 0</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_4_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_4_link">
+      <pose relative_to="${prefix}_wheel_roller_4_joint" />
+      <visual name="${prefix}_wheel_roller_4_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_4_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_5_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">0.010253 0.010253 -0.007 0 0 -45</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_5_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_5_link">
+      <pose relative_to="${prefix}_wheel_roller_5_joint" />
+      <visual name="${prefix}_wheel_roller_5_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_5_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_6_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">-0.010253 0.010253 -0.007 0 0 45</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_6_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_6_link">
+      <pose relative_to="${prefix}_wheel_roller_6_joint" />
+      <visual name="${prefix}_wheel_roller_6_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_6_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_7_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">-0.010253 -0.010253 -0.007 0 0 -45</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_7_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_7_link">
+      <pose relative_to="${prefix}_wheel_roller_7_joint" />
+      <visual name="${prefix}_wheel_roller_7_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_7_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_roller_8_joint" type="revolute">
+      <pose relative_to="${prefix}_wheel_link" degrees="true">0.010253 -0.010253 -0.007 0 0 45</pose>
+      <parent>${prefix}_wheel_link</parent>
+      <child>${prefix}_wheel_roller_8_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <dynamics>
+          <friction>0.1</friction>
+        </dynamics>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <link name="${prefix}_wheel_roller_8_link">
+      <pose relative_to="${prefix}_wheel_roller_8_joint" />
+      <visual name="${prefix}_wheel_roller_8_visual">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <xacro:black_material />
+      </visual>
+      <collision name="${prefix}_wheel_roller_8_collision">
+        <geometry>
+          <mesh>
+            <uri>package://spikonado_description/meshes/omni_wheel/roller.stl</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.01</mu>
+              <mu2>0.01</mu2>
+              <fdir1>0 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>100000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <inertial>
+        <mass>0.0047</mass>
+        <inertia>
+          <ixx>0.000000206</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000000206</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000000235</izz>
+        </inertia>
+      </inertial>
+    </link>
+  </xacro:macro>
+</sdf>

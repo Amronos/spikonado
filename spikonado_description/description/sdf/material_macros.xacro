@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sdf version="1.11" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Place from where I got the values:
+  https://github.com/gazebosim/gz-sim/blob/gz-sim8/src/rendering/MaterialParser/gazebo.material -->
+  <!-- This script cannot be used directly due to limitations of sdformat_urdf -->
+
+  <xacro:macro name="blue_material">
+    <material>
+      <ambient>0 0 1</ambient>
+      <diffuse>0 0 1</diffuse>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="red_material">
+    <material>
+      <ambient>1 0 0</ambient>
+      <diffuse>1 0 0</diffuse>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="white_material">
+    <material>
+      <ambient>1 1 1 1</ambient>
+      <diffuse>1 1 1 1</diffuse>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="yellow_material">
+    <material>
+      <ambient>1 1 0 1</ambient>
+      <diffuse>1 1 0 1</diffuse>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="black_material">
+    <material>
+      <ambient>0 0 0 1</ambient>
+      <diffuse>0 0 0 1</diffuse>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="orange_material">
+    <material>
+      <ambient>1 0.5088 0.0468 1</ambient>
+      <diffuse>1 0.5088 0.0468 1</diffuse>
+    </material>
+  </xacro:macro>
+</sdf>
